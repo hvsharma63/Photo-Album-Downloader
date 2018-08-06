@@ -32,7 +32,8 @@
     
     try {
     // Returns a `FacebookFacebookResponse` object
-        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture,gender',$accessToken->getValue());
+//        $response = $fb->get('/me?fields=name,email,albums{cover_photo,photo_count,link,photos{link}}',$accessToken->getValue());
+        $response = $fb->get('/me?fields=id,name,albums{name,link,count,description,picture{url},photos{images}}',$accessToken->getValue());
     } 
     catch(FacebookExceptionsFacebookResponseException $e) {
         echo 'Graph returned an error: ' . $e->getMessage();

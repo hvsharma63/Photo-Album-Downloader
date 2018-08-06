@@ -18,4 +18,4 @@
     $helper = $fb->getRedirectLoginHelper();
     
     $loginUrl = $helper->getLoginUrl($callBackUrl, $permissions);
-?>
+?>  
