@@ -26,7 +26,7 @@
                 <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"> <?php print_r($data['albums'][$i]['name']); ?> </h3>
+                            <h3 class="panel-title"> <?php print_r($current_album['name']); ?> </h3>
                         </div>
                         <div class="panel-body">
                             <img src="<?php echo $current_album['picture']['url'] ?>" alt="photo" srcset="">
@@ -36,7 +36,10 @@
                                     echo $current_album['description'];
                                 }                              
                             ?><br>
-                            <a href="./single.php?id=<?php echo $current_album['id'] ?>" target="_blank">View photos of this</a>               
+                            <a href="./single.php?id=<?php echo $current_album['id'] ?>" target="_blank">View Individual Photos</a>
+                            <input type="hidden" name="albumId" id="albumId<?php echo $current_album['id'] ?>" value="<?php echo $current_album['id'] ?>">
+                            <br>
+                            <input type="submit" class="submit btn btn-sm btn-info" value="Download album in Zip" name="<?php echo $current_album['id'] ?>">               
                         </div>
                     </div>
                 </div>
@@ -44,8 +47,32 @@
             $i++;
             }
         ?>
+        <div class="col-md-12" id="result">
+        
+        </div>
     </div>
-    <!-- <?php 
-                                $_SESSION['albumPhotos'] = $data['albums']['photos'];
-                            ?> -->
+    <script>
+        $(document).ready(function(){
+
+            $(".submit").click(function(){
+                var id = $(this).attr('name');
+                var albumId = $("#albumId" + id).val();
+                alert(albumId);
+                // $.post("ajax.php", {name: uname, email: uemail, password: upassword}, function(data){
+
+                //     $("#result").html(data);
+
+                // })
+                    
+                $.ajax({
+                    type: 'POST',
+                    url: './include/getData.php',
+                    data: {album_id: albumId},
+                    success: function(data){
+                        $("#result").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 <?php include_once "./include/footer.php" ?>
