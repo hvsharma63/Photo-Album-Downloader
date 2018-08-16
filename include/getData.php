@@ -26,20 +26,21 @@
     
         if($found == 1){    
             for($k=0;$k<count($data['albums'][$correctIdNumber]['photos']);$k++){    
-    ?>
-                <?php echo $data['albums'][$correctIdNumber]['photos'][$k]['images'][0]['source']; ?>">
-    <?php
-                $selected = $data['albums'][$correctIdNumber]['photos'][$k]['images'][0]['source'];
+   
+                $selected = $data['albums'][$correctIdNumber]['photos'][$k]['images'][0]['source']; 
+
                 // $selected = explode("?",$selected);
                 // $selected = $selected[0];
+                echo "<br>";
                 array_push($files,$selected);
-
+                
             }
         }
         else{
             echo "Sorry, Wrong ID! And Hence No Album Found!";
         }
     
+    // exit;
     
     
     # create new zip object
@@ -68,6 +69,11 @@
     $zip->close();
     
     # send the file to the browser as a download
+    header('Content-Description: Facebook Album Download');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file));
     header('Content-disposition: attachment; filename="my file.zip"');
     header('Content-type: application/zip');
     readfile($tmp_file);
