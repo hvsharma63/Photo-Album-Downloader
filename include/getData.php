@@ -49,6 +49,7 @@
     # create a temp file & open it
     $tmp_file = tempnam('.', '');
     $zip->open($tmp_file, ZipArchive::CREATE);
+    set_time_limit(0);
     
     $l=1;
     # loop through each file
@@ -69,12 +70,10 @@
     $zip->close();
     
     # send the file to the browser as a download
-    header('Content-Description: Facebook Album Download');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    header('Content-disposition: attachment; filename="my file.zip"');
+    set_time_limit(0);
+    header('Pragma: public'); 	// required
+    header('Expires: 0');	
+    header('Content-disposition: attachment; filename="ImgFolder.zip"');
     header('Content-type: application/zip');
     readfile($tmp_file);
     unlink($tmp_file);

@@ -16,31 +16,6 @@
             $found = 0;
         }   
 
-        // if(isset($_POST['downloadimg'])){
-        
-        //     $zip = new ZipArchive();
-
-        //     $tmp_file = tempnam('.','');
-        //     $zip->open($tmp_file, ZipArchive::CREATE);
-        //     if(isset($_POST['files']) and count($post['files']) > 0){
-
-        //             foreach($files as $file){
-
-        //             // Download File
-        //             $download_file = file_get_contents($file);
-
-        //             // Add it to the zip
-        //             $zip->addFromString(basename($file),$download_file);
-        //             $zip->close();
-
-        //             $zip->addFile($file_folder.$file);
-        //             header('Content-type: application/zip');
-        //             header('Content-Dispostion: attachment; filename="'.$zip_name.'"');
-        //             readfile($tmp_file);
-        //         }
-        //     }
-        // }
-        
         if(isset($_POST['downloadimg'])){
             $k=0;
             if(!empty($_POST['files'])){
