@@ -1,4 +1,4 @@
-<?php
+    <?php
     session_start();
     if(isset($_POST['album_id'])){
         $id = $_POST['album_id' ];
@@ -26,7 +26,7 @@
     
         if($found == 1){    
             for($k=0;$k<count($data['albums'][$correctIdNumber]['photos']);$k++){    
-   
+                
                 $selected = $data['albums'][$correctIdNumber]['photos'][$k]['images'][0]['source']; 
 
                 // $selected = explode("?",$selected);
