@@ -7,7 +7,7 @@
     $app_id = "1142089132620848";
     $app_secret = "861110cb932af88b2aeecd8351b96eff";
     $permissions = ['email','user_photos']; // Optional permissions
-    $callBackUrl = "http://localhost/FB(repo)/fb-callback.php";
+    $callBackUrl = "https://photo-album-downloader.herokuapp.com/fb-callback.php";
     
     $fb = new Facebook\Facebook([
         'app_id' => $app_id, // Replace {app-id} with your app id
